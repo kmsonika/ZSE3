@@ -17,8 +17,9 @@ public class BrowserFactory {
 		System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver.exe");
 		ChromeOptions options=new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
-		options.addArguments("--disable-notifications");
-		
+		options.addArguments("--disable-notifications"); // 👈 This disables alert notifications of browser
+ //     options.addArguments("--incognito"); // 👈 This enables incognito mode
+        
 	    driver =new ChromeDriver(options);
 		System.out.println("Chrome Browser Launched.");
 	}
@@ -28,6 +29,7 @@ public class BrowserFactory {
 			System.setProperty("webdriver.edge.driver", "./drivers/msedgedriver.exe");
 			EdgeOptions options1=new EdgeOptions();
 			options1.addArguments("--remote-allow-origins=*");
+//		     options.addArguments("--incognito");
 			driver =new EdgeDriver(options1);
 			System.out.println("Edge Browser Launched.");
 		}

@@ -12,13 +12,8 @@ public class PopUpHandling {
 	public static void main(String[] args) throws InterruptedException 
 	{
 	//	1. Launch browser
-
-
-//		WebDriver driver=BrowserFactory.launchBrowser("chrome");
-//		driver.manage().window().maximize();
-
-
-		
+    	WebDriver driver=BrowserFactory.launchBrowser("chrome");
+		driver.manage().window().maximize();	
 		Thread.sleep(1000);
 
 //		2. Navigate to url
