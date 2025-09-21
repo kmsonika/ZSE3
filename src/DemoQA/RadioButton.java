@@ -2,6 +2,10 @@ package DemoQA;
 
 import java.awt.AWTException;
 import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,73 +29,34 @@ public class RadioButton {
 
 		WebDriver driver=BrowserFactory.launchBrowser("chrome");
 		driver.manage().window().maximize();
-		driver.get("https://demoqa.com/broken");
+		driver.get("https://demoqa.com/");
 		Thread.sleep(2000);
 		
 		JavascriptExecutor js= (JavascriptExecutor)driver;
 		Robot robot=new Robot();
 		Actions action=new Actions(driver);
 
-//Broken Links - Images
-		js.executeScript("window.scrollBy(0,450)");
-		Thread.sleep(1000);
+//Dynamic Properties
 		
-/*		// Get all image elements
-		List<WebElement> images = driver.findElements(By.xpath("//div/img"));
 
+		js.executeScript("window.scrollBy(0,400)");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//h5[contains(text(),'Elements')]")).click();
+		Thread.sleep(2000);
 		
-		//Valid image
-		  //List<WebElement> images = driver.findElements(By.xpath("//div/img"));
+		//Will enable 5 seconds
+		System.out.println("Button 'Will enable 5 seconds' is enabled : "+driver.findElement(By.xpath("//button[@id='enableAfter']")).isEnabled());
 
-		https://the-internet.herokuapp.com/
-		//Broken image
-		driver.findElement(By.xpath("//a[@id='created']")).click();
-*/		
+		//Color Change
+		WebElement colorbutton=driver.findElement(By.xpath("//button[@id='colorChange']"));
+		colorbutton.isDisplayed();
+		String color=colorbutton.getCssValue("color");
+		System.out.println("Button 'Color Change' has color: " +color);
 		
-		
-		//Valid Link
-       WebElement validLink= driver.findElement(By.xpath("//a[.='Click Here for Valid Link']"));
-       Thread.sleep(1000);	
-       String url=validLink.getAttribute("href");
-       if (url != null && !url.isEmpty() && url.equalsIgnoreCase("https://demoqa.com"))
-	    {
-	    	System.out.println("✅ Valid Link:  " + url);
-	    }
-	    else 
-	    {
-	    	System.err.println("❌ Broken Link: " + url);
-		}
-       Thread.sleep(1000);	
+		//Visible After 5 Seconds
+		System.out.println("Button 'Visible After 5 Seconds' is enabled : "+ driver.findElement(By.xpath("//button[@id='visibleAfter']")).isDisplayed());
 
-       
-     //Broken Link
-       WebElement InvalidLink= driver.findElement(By.xpath("//a[.='Click Here for Broken Link']"));
-       Thread.sleep(1000);	
-       String urlnew=InvalidLink.getAttribute("href");
-       if (urlnew != null && !urlnew.isEmpty() && urlnew.equalsIgnoreCase("https://the-internet.herokuapp.com"))
-	    {
-	    	System.out.println("✅ Valid Link:  " + urlnew);
-	    }
-	    else 
-	    {
-	    	System.err.println("❌ Broken Link: " + urlnew);
-		}
-       Thread.sleep(1000);	
-
-/*	List<WebElement> links=driver.findElements(By.xpath("//div[@class='row']/div/div[2]/a"));
-		for (WebElement link : links) 
-		{
-		    String url = link.getAttribute("href");	    
-		    if (url != null && !url.isEmpty() && url.equalsIgnoreCase("https://demoqa.com/") ||  url.equalsIgnoreCase("https://the-internet.herokuapp.co"))
-		    {
-		    	System.out.println("✅ Valid Link:  " + url);
-		    }
-		    else 
-		    {
-		    	System.err.println("❌ Broken Link: " + url);
-			}	
-		}
-*/	
+       Thread.sleep(1000);		
 
 	}
 }

@@ -38,7 +38,7 @@ public static void main(String[] args) throws InterruptedException, AWTException
 		
 		
 		//press cmd + TAB to make sure, that the focus is on dialog(optional)
-//		robot.keyPress(KeyEvent.VK_META);
+//		robot.keyPress(KeyEvent.VK_META);--->for Mac
 //		robot.keyPress(KeyEvent.VK_TAB);
 //		robot.keyRelease(KeyEvent.VK_TAB);
 //		robot.keyRelease(KeyEvent.VK_META);
