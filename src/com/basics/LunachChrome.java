@@ -20,5 +20,4 @@ public class LunachChrome
 	 System.out.println("Page Title Name is: "+driver.getTitle());
 	 driver.quit();
 	}
-
 }

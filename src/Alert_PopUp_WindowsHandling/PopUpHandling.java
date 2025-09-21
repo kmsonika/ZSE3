@@ -1,6 +1,5 @@
 package Alert_PopUp_WindowsHandling;
 
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -24,11 +23,7 @@ public class PopUpHandling {
 		// POP UP handling
 		driver.findElement(By.xpath("//button[.='OK']")).click();
 		Thread.sleep(1000);
-		
-		//Alert handling
-		//Alert alert=driver.switchTo().alert();
-		
- 		
+	
 		
 		//select date calendar
 		
