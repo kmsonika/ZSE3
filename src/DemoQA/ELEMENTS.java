@@ -17,7 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 import com.basics.BrowserFactory;
 
 public class ELEMENTS {
-
+	
 			public static void main(String[] args) throws InterruptedException, AWTException {
 				WebDriver driver=BrowserFactory.launchBrowser("chrome");
 				driver.manage().window().maximize();
