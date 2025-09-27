@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import com.basics.BrowserFactory;
 import OrangeHRM.LeftManuPomPage;
 import OrangeHRM.LoginPomPage;
+import OrangeHRM.NavigationPomCode;
+
 
 public class CreatingEmployeeAndLoggingAsEmployee 
 {
@@ -12,17 +14,24 @@ public class CreatingEmployeeAndLoggingAsEmployee
 	{
 		// Test case: Create Employee And Logging As Employee 
 		
-		WebDriver driver=BrowserFactory.launchBrowser("chrome");
-		driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-		driver.manage().window().maximize();
-		Thread.sleep(3000);
-		
-		LoginPomPage loginpage=new LoginPomPage(driver);
-		loginpage.loginAsUser("Admin", "admin123");
+		// Launch browser
+        WebDriver driver = BrowserFactory.launchBrowser("chrome");
+
+        // Navigate to login page
+        NavigationPomCode nav = new NavigationPomCode(driver);
+        nav.navigateTo("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+        // Wait for page to load
+        Thread.sleep(3000);
+
+        // Login
+        LoginPomPage loginpage = new LoginPomPage(driver);
+        loginpage.loginAsUser("Admin","admin123");
+        Thread.sleep(3000);
+
 		
 		LeftManuPomPage leftmenu=new LeftManuPomPage(driver);
 		leftmenu.clickOnPIMButton();
 
 	}
-
 }

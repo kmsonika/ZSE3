@@ -1,16 +1,22 @@
 package OrangeHRM;
 
-import java.sql.Driver;
-
 import org.openqa.selenium.WebDriver;
-
 import com.basics.BrowserFactory;
 
 public class NavigationPomCode
-{
-	WebDriver driver=BrowserFactory.launchBrowser("chrome");
+{	
+	WebDriver driver;
 
-
-	
-	
+	// Constructor to initialize WebDriver
+	public NavigationPomCode(WebDriver driver)
+	{
+		this.driver=driver;
+	}
+		
+	public void navigateTo(String url)
+	{
+		driver.manage().window().maximize();
+		driver.navigate().to(url);
+		
+	}	
 }

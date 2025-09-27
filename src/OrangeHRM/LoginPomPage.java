@@ -1,17 +1,23 @@
 package OrangeHRM;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPomPage 
 {
 	WebDriver driver;
 	
 //List all the web elements on the page	
+	
 	//Username
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement usernameTextfield;
+	
+	//OR---------->instead of @findBy we can user "By"
+//	By usernameTextfield= By.xpath("//input[@name='username']");
 	
 	//Password
 	@FindBy(xpath="//input[@name='password']")
@@ -22,7 +28,7 @@ public class LoginPomPage
 	WebElement loginButton;	
 	
 	//Forgot your password?
-	@FindBy(xpath = "//form//div[4]/p")
+	@FindBy(xpath = "//p[text()='Forgot your password? ']")
 	WebElement forgotPasswordButton;	
 	
 	//orange HRM link text on login page
@@ -47,6 +53,7 @@ public class LoginPomPage
 	public LoginPomPage(WebDriver driver)
 	{
 		this.driver=driver;
+		PageFactory.initElements(driver, this); // This line is critical!
 	}
 	
 	//methods of class
