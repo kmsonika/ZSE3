@@ -56,8 +56,7 @@ public class LoginPomPage
 		PageFactory.initElements(driver, this); // This line is critical!
 	}
 	
-	//methods of class
-	
+	//Methods of class	
 	public void enterUserName(String username)
 	{
 		usernameTextfield.sendKeys(username);

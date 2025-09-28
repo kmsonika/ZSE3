@@ -31,7 +31,6 @@ public static void main(String[] args) throws InterruptedException, AWTException
 		Robot robot = new Robot();
 		robot.delay(500);
 		
-		//copying the path address and storing it in clipboard
 		String filePath = "C:\\Users\\Sonika Gautam\\Downloads\\Testing222.docx";
 		StringSelection selection = new StringSelection(filePath);
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);

@@ -1,11 +1,13 @@
 package OrangeHRM;
 
+import java.awt.AWTException;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class addEmployeePomPage 
+public class addEmployeePomPage extends BasePageOrangeHRM
 {
 	//Add employee pom page
 	
@@ -46,7 +48,6 @@ public class addEmployeePomPage
 	//Confirm Password text field
 	@FindBy(xpath = "//label[text()='Confirm Password']/../../div/input']")
 	WebElement confirmPasswordTextField;
-
 				
 	//Status Enable radio button
 	@FindBy(xpath = "//label[text()='Enabled']")
@@ -64,16 +65,23 @@ public class addEmployeePomPage
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement saveButton;
 	
-	public addEmployeePomPage(WebDriver driver)
+	public addEmployeePomPage(WebDriver driver) throws AWTException
 	{
+		super(driver); // Call to superclass constructor
 		this.driver=driver;
 		PageFactory.initElements(driver, this); // This line is critical!
 	}	
 	
+	
 //methods	
+	
+	public void profile()
+	{
+		js.executeScript("arguments[0].click();", profilePictureAddButton);
+	}
 
 	// Create employee without login details	
-	public void createUser(String firstName, String middleName, String lastName, CharSequence[] employeeID)
+	public void createUser(String firstName, String middleName, String lastName, String employeeID)
 	{
 		firstNameTextField.sendKeys(firstName);
 		middleNameTextField.sendKeys(middleName);
@@ -81,7 +89,7 @@ public class addEmployeePomPage
 		employeeIdTextField.sendKeys(employeeID);
 	}
 	
-	public void createEmployeeWithoutLoginDetails(String firstName, String middleName, String lastName, CharSequence[] employeeID)
+	public void createEmployeeWithoutLoginDetails(String firstName, String middleName, String lastName, String employeeID)
 	{
 		createUser(firstName,middleName,lastName,employeeID);
 		saveButton.click();		
@@ -96,10 +104,23 @@ public class addEmployeePomPage
 		confirmPasswordTextField.sendKeys(confirmPassword);	
 	}
 	
-	public void createEmployeeWithLoginDetails(String firstName, String middleName, String lastName, CharSequence[] employeeID,String userName, String password, String confirmPassword ) {
+	public void createEmployeeWithLoginDetails(String firstName, String middleName, String lastName, String employeeID,String userName, String password, String confirmPassword ) 
+	{
 		createUser(firstName,middleName,lastName,employeeID);		
 		createUsernamePassword(userName, password, confirmPassword);
 		saveButton.click();		
+		}
+	
+	BasePageOrangeHRM basepage=new BasePageOrangeHRM(driver);	
+	public void selectProfileImage(String filePathToUpload)
+	{
+		profilePictureAddButton.click();	
+		basepage.Uploadfile(filePathToUpload);
 	}
+	
+	
+	
+	
+	
 
 }
